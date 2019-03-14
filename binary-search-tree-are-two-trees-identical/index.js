@@ -7,18 +7,24 @@ const { BinarySearchTree } = require('../_starters/binary-search-tree');
  */
 
 BinarySearchTree.areIdentical = function areIdentical(rootOne, rootTwo) {
-  // check the left and right node
+  //base case there is no left and right 
+  // if the value the same return
+  if(!(rootOne.left && rootTwo.left) && !(rootTwo.right && rootTwo.right)){
+    if(rootOne.val === rootTwo.val){return true}
+    return false
+  }
   
-  // create a  vairable to check rootOne and rootTwo has the same left and right node
-  // check the node first, 
-  // if it is true, keep checking their left and right, treat them as the new rootOne and rootTwo
-  //if not match return false
-  let checker = true;
+  // check left
   
+  if (rootOne.left && rootTwo.left){
+   return areIdentical(rootOne.left, rootTwo.left)
+  }
   
+  if(rootOne.right && rootTwo.right){
+    return areIdentical(rootOne.right, rootTwo.right)
+  }
   
-  
-  
+  return false;
   
 };
 
